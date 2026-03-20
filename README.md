@@ -1,72 +1,66 @@
-# Book My Stay App – Use Case 3
+# Book My Stay App – Use Case 4
 
 ## Overview
 
-This use case introduces centralized inventory management using a HashMap. It replaces scattered availability variables with a single source of truth.
+This use case introduces room search functionality with read-only access to inventory. It ensures that users can view available rooms without modifying system state.
 
 ## Objective
 
-* Manage room availability using a centralized structure
-* Use HashMap for efficient storage and retrieval
-* Encapsulate inventory logic in a dedicated class
+* Enable safe, read-only room search
+* Display only available rooms
+* Maintain separation between search and booking logic
 
 ## Features
 
-* Centralized room inventory using HashMap
-* Fast lookup and update operations (O(1))
-* Methods for:
-
-  * Viewing availability
-  * Updating availability
-  * Displaying inventory
+* Room search service
+* Filters unavailable rooms
+* Displays room details and availability
+* Inventory remains unchanged during search
 
 ## File Structure
 
-* `UseCase3InventorySetup.java` – Contains inventory logic and main method
+* `UseCase4RoomSearch.java` – Contains all classes and search logic
 
 ## How to Compile and Run
 
 ### Compile
 
-```id="x8p2lm"
-javac UseCase3InventorySetup.java
+```id="p0x9dl"
+javac UseCase4RoomSearch.java
 ```
 
 ### Run
 
-```id="q7n1vd"
-java UseCase3InventorySetup
+```id="r8t2mq"
+java UseCase4RoomSearch
 ```
 
 ## Expected Output
 
-```id="y3r9bk"
+```id="w4k1zs"
 Welcome to Book My Stay App
-Hotel Booking System v3.1
+Hotel Booking System v4.0
 
---- Room Inventory ---
-Single Room : 5
-Double Room : 3
-Suite Room : 2
+--- Available Rooms ---
+Type: Single Room
+Beds: 1
+Price: 1000.0
+Available: 5
 
-Checking availability for Single Room: 5
-
-Updating availability for Double Room...
-
---- Room Inventory ---
-Single Room : 5
-Double Room : 4
-Suite Room : 2
+Type: Double Room
+Beds: 2
+Price: 2000.0
+Available: 3
 ```
 
 ## Key Concepts Used
 
-* HashMap
-* Encapsulation
-* Single Source of Truth
-* O(1) Lookup
+* Read-Only Access
 * Separation of Concerns
+* Defensive Programming
+* Encapsulation
+* Filtering Logic
 
 ## Version
 
-3.1
+4.0
