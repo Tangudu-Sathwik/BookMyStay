@@ -1,75 +1,72 @@
-# Book My Stay App – Use Case 2
+# Book My Stay App – Use Case 3
 
 ## Overview
 
-This use case introduces object-oriented design concepts such as abstraction, inheritance, and polymorphism using a Hotel Booking scenario.
+This use case introduces centralized inventory management using a HashMap. It replaces scattered availability variables with a single source of truth.
 
 ## Objective
 
-* Model room types using classes
-* Apply inheritance and abstraction
-* Display room details and availability
+* Manage room availability using a centralized structure
+* Use HashMap for efficient storage and retrieval
+* Encapsulate inventory logic in a dedicated class
 
 ## Features
 
-* Abstract `Room` class
-* Concrete room types:
+* Centralized room inventory using HashMap
+* Fast lookup and update operations (O(1))
+* Methods for:
 
-    * Single Room
-    * Double Room
-    * Suite Room
-* Static availability using variables
-* Console-based output
+  * Viewing availability
+  * Updating availability
+  * Displaying inventory
 
 ## File Structure
 
-* `UseCase2RoomInitialization.java` – Contains all classes and main method
+* `UseCase3InventorySetup.java` – Contains inventory logic and main method
 
 ## How to Compile and Run
 
 ### Compile
 
-```id="c1p0xq"
-javac UseCase2RoomInitialization.java
+```id="x8p2lm"
+javac UseCase3InventorySetup.java
 ```
 
 ### Run
 
-```id="z9a8lm"
-java UseCase2RoomInitialization
+```id="q7n1vd"
+java UseCase3InventorySetup
 ```
 
 ## Expected Output
 
-```id="d3k8ws"
+```id="y3r9bk"
 Welcome to Book My Stay App
-Hotel Booking System v2.1
+Hotel Booking System v3.1
 
---- Room Details ---
-Type: Single Room
-Beds: 1
-Price: 1000.0
-Available: 5
+--- Room Inventory ---
+Single Room : 5
+Double Room : 3
+Suite Room : 2
 
-Type: Double Room
-Beds: 2
-Price: 2000.0
-Available: 3
+Checking availability for Single Room: 5
 
-Type: Suite Room
-Beds: 3
-Price: 5000.0
-Available: 2
+Updating availability for Double Room...
+
+--- Room Inventory ---
+Single Room : 5
+Double Room : 4
+Suite Room : 2
 ```
 
 ## Key Concepts Used
 
-* Abstract Class
-* Inheritance
-* Polymorphism
+* HashMap
 * Encapsulation
-* Static Variables for Availability
+* Single Source of Truth
+* O(1) Lookup
+* Separation of Concerns
 
 ## Version
 
-2.1
+3.1

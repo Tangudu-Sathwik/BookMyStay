@@ -1,97 +1,55 @@
-abstract class Room {
+import java.util.HashMap;
 
-    private String type;
-    private int beds;
-    private double price;
+class RoomInventory {
 
-    public Room(String type, int beds, double price) {
-        this.type = type;
-        this.beds = beds;
-        this.price = price;
+    private HashMap<String, Integer> inventory;
+
+    public RoomInventory() {
+        inventory = new HashMap<>();
+
+        inventory.put("Single Room", 5);
+        inventory.put("Double Room", 3);
+        inventory.put("Suite Room", 2);
     }
 
-    public String getType() {
-        return type;
+    public int getAvailability(String roomType) {
+        return inventory.getOrDefault(roomType, 0);
     }
 
-    public int getBeds() {
-        return beds;
+    public void updateAvailability(String roomType, int count) {
+        if (inventory.containsKey(roomType)) {
+            inventory.put(roomType, count);
+        } else {
+            System.out.println("Room type not found.");
+        }
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public abstract void displayDetails();
-}
-
-class SingleRoom extends Room {
-
-    public SingleRoom() {
-        super("Single Room", 1, 1000);
-    }
-
-    public void displayDetails() {
-        System.out.println("Type: " + getType());
-        System.out.println("Beds: " + getBeds());
-        System.out.println("Price: " + getPrice());
+    public void displayInventory() {
+        System.out.println("\n--- Room Inventory ---");
+        for (String type : inventory.keySet()) {
+            System.out.println(type + " : " + inventory.get(type));
+        }
     }
 }
 
-class DoubleRoom extends Room {
-
-    public DoubleRoom() {
-        super("Double Room", 2, 2000);
-    }
-
-    public void displayDetails() {
-        System.out.println("Type: " + getType());
-        System.out.println("Beds: " + getBeds());
-        System.out.println("Price: " + getPrice());
-    }
-}
-
-class SuiteRoom extends Room {
-
-    public SuiteRoom() {
-        super("Suite Room", 3, 5000);
-    }
-
-    public void displayDetails() {
-        System.out.println("Type: " + getType());
-        System.out.println("Beds: " + getBeds());
-        System.out.println("Price: " + getPrice());
-    }
-}
-
-public class UseCase2 {
+public class UseCase3 {
 
     public static void main(String[] args) {
 
         System.out.println("Welcome to Book My Stay App");
-        System.out.println("Hotel Booking System v2.1");
+        System.out.println("Hotel Booking System v3.1");
 
-        Room single = new SingleRoom();
-        Room doubleRoom = new DoubleRoom();
-        Room suite = new SuiteRoom();
+        RoomInventory inventory = new RoomInventory();
 
-        int singleAvailability = 5;
-        int doubleAvailability = 3;
-        int suiteAvailability = 2;
+        inventory.displayInventory();
 
-        System.out.println("\n--- Room Details ---");
+        System.out.println("\nChecking availability for Single Room: "
+                + inventory.getAvailability("Single Room"));
 
-        single.displayDetails();
-        System.out.println("Available: " + singleAvailability);
+        System.out.println("\nUpdating availability for Double Room...");
 
-        System.out.println();
+        inventory.updateAvailability("Double Room", 4);
 
-        doubleRoom.displayDetails();
-        System.out.println("Available: " + doubleAvailability);
-
-        System.out.println();
-
-        suite.displayDetails();
-        System.out.println("Available: " + suiteAvailability);
+        inventory.displayInventory();
     }
 }
