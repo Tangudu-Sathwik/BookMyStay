@@ -1,63 +1,73 @@
-# Book My Stay App – Use Case 5
+# Book My Stay App – Use Case 6
 
 ## Overview
 
-This use case introduces a booking request mechanism using a Queue to ensure fair handling of multiple booking requests.
+This use case confirms reservations and allocates rooms while preventing double-booking. Each reservation is assigned a unique room ID, and inventory is updated immediately.
 
 ## Objective
 
-* Accept booking requests from users
-* Store requests in arrival order
-* Ensure fairness using FIFO principle
+* Confirm bookings from queued requests
+* Generate unique room IDs
+* Prevent double-booking
+* Synchronize inventory after allocation
 
 ## Features
 
-* Reservation class to represent booking requests
-* Queue-based request management
-* FIFO (First-Come-First-Served) processing
-* No inventory updates at this stage
+* FIFO processing of booking requests
+* Unique room ID generation per reservation
+* Inventory decrement upon confirmation
+* Allocation tracking with `Set<String>` per room type
+* Graceful handling of insufficient availability
 
 ## File Structure
 
-* `UseCase5BookingRequestQueue.java` – Contains reservation and queue logic
+* `UseCase6RoomAllocationService.java` – Contains reservation, inventory, and booking logic
 
 ## How to Compile and Run
 
 ### Compile
 
-```id="h2k9pl"
-javac UseCase5BookingRequestQueue.java
+```id="a9k4pl"
+javac UseCase6RoomAllocationService.java
 ```
 
 ### Run
 
-```id="n8v3qx"
-java UseCase5BookingRequestQueue
+```id="b7m2qr"
+java UseCase6RoomAllocationService
 ```
 
 ## Expected Output
 
-```id="p4z7ws"
+```id="c4r1sx"
 Welcome to Book My Stay App
-Hotel Booking System v5.0
-Booking request added for Alice
-Booking request added for Bob
-Booking request added for Charlie
+Hotel Booking System v6.0
 
---- Booking Request Queue ---
-Guest: Alice, Room Type: Single Room
-Guest: Bob, Room Type: Double Room
-Guest: Charlie, Room Type: Suite Room
+--- Processing Bookings ---
+Reservation Confirmed:
+Guest: Alice, Room Type: Single Room, Room ID: S-12
+Reservation Confirmed:
+Guest: Bob, Room Type: Double Room, Room ID: D-8
+Reservation Confirmed:
+Guest: Charlie, Room Type: Suite Room, Room ID: S-55
+Reservation Confirmed:
+Guest: David, Room Type: Suite Room, Room ID: S-77
+Reservation Failed (No Availability): Eve for Suite Room
+
+--- Current Inventory ---
+Single Room : 4
+Double Room : 2
+Suite Room : 0
 ```
 
 ## Key Concepts Used
 
-* Queue Data Structure
-* FIFO Principle
-* Encapsulation
-* Fair Request Handling
-* Separation of Concerns
+* Queue Data Structure (FIFO)
+* HashMap & Set for allocation tracking
+* Unique Room ID generation
+* Atomic operations for allocation + inventory update
+* Prevention of double-booking
 
 ## Version
 
-5.0
+6.0
