@@ -1,60 +1,75 @@
-# Book My Stay App – Use Case 1
+# Book My Stay App – Use Case 2
 
 ## Overview
 
-This project demonstrates the basic entry point of a Java application for a Hotel Booking Management System. It focuses on how a program starts execution and displays a welcome message.
+This use case introduces object-oriented design concepts such as abstraction, inheritance, and polymorphism using a Hotel Booking scenario.
 
 ## Objective
 
-* Understand how Java programs begin execution
-* Implement the `main()` method
-* Display output using `System.out.println()`
+* Model room types using classes
+* Apply inheritance and abstraction
+* Display room details and availability
 
 ## Features
 
-* Application entry point using `main()` method
-* Welcome message display
-* Application name and version output
+* Abstract `Room` class
+* Concrete room types:
+
+    * Single Room
+    * Double Room
+    * Suite Room
+* Static availability using variables
+* Console-based output
 
 ## File Structure
 
-* `UseCase1HotelBookingApp.java` – Main class containing program entry point
+* `UseCase2RoomInitialization.java` – Contains all classes and main method
 
 ## How to Compile and Run
 
-### Step 1: Compile the Program
+### Compile
 
-```
-javac UseCase1HotelBookingApp.java
+```id="c1p0xq"
+javac UseCase2RoomInitialization.java
 ```
 
-### Step 2: Run the Program
+### Run
 
-```
-java UseCase1HotelBookingApp
+```id="z9a8lm"
+java UseCase2RoomInitialization
 ```
 
 ## Expected Output
 
-```
+```id="d3k8ws"
 Welcome to Book My Stay App
-Hotel Booking System v1.0
-Application started successfully!
+Hotel Booking System v2.1
+
+--- Room Details ---
+Type: Single Room
+Beds: 1
+Price: 1000.0
+Available: 5
+
+Type: Double Room
+Beds: 2
+Price: 2000.0
+Available: 3
+
+Type: Suite Room
+Beds: 3
+Price: 5000.0
+Available: 2
 ```
 
 ## Key Concepts Used
 
-* Class and Object Structure
-* `main()` Method
-* `static` Keyword
-* Console Output
-* String Literals
-* Program Execution Flow
-
-## Author
-
-Your Name
+* Abstract Class
+* Inheritance
+* Polymorphism
+* Encapsulation
+* Static Variables for Availability
 
 ## Version
 
-1.0
+2.1
