@@ -1,66 +1,63 @@
-# Book My Stay App – Use Case 4
+# Book My Stay App – Use Case 5
 
 ## Overview
 
-This use case introduces room search functionality with read-only access to inventory. It ensures that users can view available rooms without modifying system state.
+This use case introduces a booking request mechanism using a Queue to ensure fair handling of multiple booking requests.
 
 ## Objective
 
-* Enable safe, read-only room search
-* Display only available rooms
-* Maintain separation between search and booking logic
+* Accept booking requests from users
+* Store requests in arrival order
+* Ensure fairness using FIFO principle
 
 ## Features
 
-* Room search service
-* Filters unavailable rooms
-* Displays room details and availability
-* Inventory remains unchanged during search
+* Reservation class to represent booking requests
+* Queue-based request management
+* FIFO (First-Come-First-Served) processing
+* No inventory updates at this stage
 
 ## File Structure
 
-* `UseCase4RoomSearch.java` – Contains all classes and search logic
+* `UseCase5BookingRequestQueue.java` – Contains reservation and queue logic
 
 ## How to Compile and Run
 
 ### Compile
 
-```id="p0x9dl"
-javac UseCase4RoomSearch.java
+```id="h2k9pl"
+javac UseCase5BookingRequestQueue.java
 ```
 
 ### Run
 
-```id="r8t2mq"
-java UseCase4RoomSearch
+```id="n8v3qx"
+java UseCase5BookingRequestQueue
 ```
 
 ## Expected Output
 
-```id="w4k1zs"
+```id="p4z7ws"
 Welcome to Book My Stay App
-Hotel Booking System v4.0
+Hotel Booking System v5.0
+Booking request added for Alice
+Booking request added for Bob
+Booking request added for Charlie
 
---- Available Rooms ---
-Type: Single Room
-Beds: 1
-Price: 1000.0
-Available: 5
-
-Type: Double Room
-Beds: 2
-Price: 2000.0
-Available: 3
+--- Booking Request Queue ---
+Guest: Alice, Room Type: Single Room
+Guest: Bob, Room Type: Double Room
+Guest: Charlie, Room Type: Suite Room
 ```
 
 ## Key Concepts Used
 
-* Read-Only Access
-* Separation of Concerns
-* Defensive Programming
+* Queue Data Structure
+* FIFO Principle
 * Encapsulation
-* Filtering Logic
+* Fair Request Handling
+* Separation of Concerns
 
 ## Version
 
-4.0
+5.0
