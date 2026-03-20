@@ -1,73 +1,66 @@
-# Book My Stay App – Use Case 6
+# Book My Stay App – Use Case 7
 
 ## Overview
 
-This use case confirms reservations and allocates rooms while preventing double-booking. Each reservation is assigned a unique room ID, and inventory is updated immediately.
+This use case allows guests to select optional add-on services for an existing reservation. Services are managed separately to avoid modifying core booking or inventory logic.
 
 ## Objective
 
-* Confirm bookings from queued requests
-* Generate unique room IDs
-* Prevent double-booking
-* Synchronize inventory after allocation
+* Attach multiple services to a single reservation
+* Map reservation IDs to selected services
+* Calculate total add-on cost
+* Maintain separation from core booking and inventory
 
 ## Features
 
-* FIFO processing of booking requests
-* Unique room ID generation per reservation
-* Inventory decrement upon confirmation
-* Allocation tracking with `Set<String>` per room type
-* Graceful handling of insufficient availability
+* Service class representing an add-on offering
+* AddOnServiceManager to map reservations to services
+* Support for multiple services per reservation
+* Total add-on cost calculation
 
 ## File Structure
 
-* `UseCase6RoomAllocationService.java` – Contains reservation, inventory, and booking logic
+* `UseCase7AddOnServiceSelection.java` – Contains reservation, service, and manager logic
 
 ## How to Compile and Run
 
 ### Compile
 
-```id="a9k4pl"
-javac UseCase6RoomAllocationService.java
+```id="f7k4pl"
+javac UseCase7AddOnServiceSelection.java
 ```
 
 ### Run
 
-```id="b7m2qr"
-java UseCase6RoomAllocationService
+```id="g8n3qs"
+java UseCase7AddOnServiceSelection
 ```
 
 ## Expected Output
 
-```id="c4r1sx"
+```id="h3r2zw"
 Welcome to Book My Stay App
-Hotel Booking System v6.0
-
---- Processing Bookings ---
-Reservation Confirmed:
+Hotel Booking System v7.0
 Guest: Alice, Room Type: Single Room, Room ID: S-12
-Reservation Confirmed:
-Guest: Bob, Room Type: Double Room, Room ID: D-8
-Reservation Confirmed:
-Guest: Charlie, Room Type: Suite Room, Room ID: S-55
-Reservation Confirmed:
-Guest: David, Room Type: Suite Room, Room ID: S-77
-Reservation Failed (No Availability): Eve for Suite Room
+Added service Breakfast to reservation S-12
+Added service Spa Session to reservation S-12
+Added service Airport Pickup to reservation S-12
 
---- Current Inventory ---
-Single Room : 4
-Double Room : 2
-Suite Room : 0
+--- Add-On Services for Reservation S-12 ---
+Service: Breakfast, Cost: 200.0
+Service: Spa Session, Cost: 500.0
+Service: Airport Pickup, Cost: 300.0
+Total Add-On Cost: 1000.0
 ```
 
 ## Key Concepts Used
 
-* Queue Data Structure (FIFO)
-* HashMap & Set for allocation tracking
-* Unique Room ID generation
-* Atomic operations for allocation + inventory update
-* Prevention of double-booking
+* Composition over Inheritance
+* Map<String, List<Service>> for reservation-service mapping
+* Separation of Core and Optional Features
+* Cost Aggregation
+* Flexible extensibility for new services
 
 ## Version
 
-6.0
+7.0
